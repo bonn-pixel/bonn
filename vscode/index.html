@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc Nghiệm Toán 10 - Vector - Phạm Trí Đức </title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #b3e5fc);
+            margin: 0;
+            padding: 40px;
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #0288d1;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p.intro {
+            text-align: center;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: #546e7a;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #b0bec5;
+            border-radius: 10px;
+            background: #f0faff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .question:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+        .question h3 {
+            margin: 0 0 10px;
+            color: #01579b;
+            font-size: 1.3em;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        .options input[type="radio"] {
+            margin-right: 15px;
+            accent-color: #0288d1;
+        }
+        #submitBtn {
+            display: block;
+            width: 250px;
+            margin: 30px auto;
+            padding: 12px;
+            background: #0288d1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background 0.3s;
+        }
+        #submitBtn:hover {
+            background: #0277bd;
+        }
+        #result {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+            padding: 25px;
+            background: #e1f5fe;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        #result h2 {
+            color: #0288d1;
+            font-size: 2em;
+        }
+        .correct {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        .mathjax {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trắc Nghiệm Toán 10 - Chủ Đề Vector</h1>
+        <p class="intro">Bài trắc nghiệm gồm 20 câu hỏi về vector, Trả lời tất cả câu hỏi trước khi nộp bài để xem kết quả chi tiết,fixcode Ptduc.</p>
+        <form id="quizForm">
+            <div class="question">
+                <h3>Câu 1: Vector là gì?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q1" value="A"> A. Một đại lượng chỉ có độ lớn</li>
+                    <li><input type="radio" name="q1" value="B"> B. Một đại lượng có độ lớn và hướng</li>
+                    <li><input type="radio" name="q1" value="C"> C. Một đường thẳng</li>
+                    <li><input type="radio" name="q1" value="D"> D. Một điểm trong không gian</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 2: Vector \(\vec{AB}\) với A(1,2), B(4,6) có tọa độ là?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q2" value="A"> A. (3,4)</li>
+                    <li><input type="radio" name="q2" value="B"> B. (5,8)</li>
+                    <li><input type="radio" name="q2" value="C"> C. (-3,-4)</li>
+                    <li><input type="radio" name="q2" value="D"> D. (1,2)</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 3: Độ lớn của vector \(\vec{v} = (3,4)\) là?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q3" value="A"> A. 5</li>
+                    <li><input type="radio" name="q3" value="B"> B. 7</li>
+                    <li><input type="radio" name="q3" value="C"> C. 12</li>
+                    <li><input type="radio" name="q3" value="D"> D. 25</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 4: Vector đối của \(\vec{a}\) là?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q4" value="A"> A. \(\vec{a}\)</li>
+                    <li><input type="radio" name="q4" value="B"> B. \(-\vec{a}\)</li>
+                    <li><input type="radio" name="q4" value="C"> C. \(2\vec{a}\)</li>
+                    <li><input type="radio" name="q4" value="D"> D. \(\vec{0}\)</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 5: Tích của vector \(\vec{a}\) với số thực \(k = -2\) sẽ làm gì với vector?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q5" value="A"> A. Độ lớn gấp đôi, hướng ngược lại</li>
+                    <li><input type="radio" name="q5" value="B"> B. Độ lớn gấp đôi, hướng giữ nguyên</li>
+                    <li><input type="radio" name="q5" value="C"> C. Độ lớn không đổi, hướng ngược lại</li>
+                    <li><input type="radio" name="q5" value="D"> D. Trở thành vector không</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 6: Hai vector \(\vec{a}\) và \(\vec{b}\) cùng phương nếu?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q6" value="A"> A. Chúng vuông góc</li>
+                    <li><input type="radio" name="q6" value="B"> B. \(\vec{b} = k \vec{a}\), \(k\) là số thực</li>
+                    <li><input type="radio" name="q6" value="C"> C. Chúng có cùng độ lớn</li>
+                    <li><input type="radio" name="q6" value="D"> D. Chúng có cùng điểm đặt</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 7: Tích vô hướng \(\vec{a} \cdot \vec{b}\) bằng 0 khi nào?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q7" value="A"> A. Hai vector vuông góc</li>
+                    <li><input type="radio" name="q7" value="B"> B. Hai vector song song</li>
+                    <li><input type="radio" name="q7" value="C"> C. Hai vector cùng hướng</li>
+                    <li><input type="radio" name="q7" value="D"> D. Hai vector bằng nhau</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 8: Tính \(\vec{a} \cdot \vec{b}\) với \(\vec{a} = (2,3)\), \(\vec{b} = (-1,4)\).</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q8" value="A"> A. 10</li>
+                    <li><input type="radio" name="q8" value="B"> B. -10</li>
+                    <li><input type="radio" name="q8" value="C"> C. 6</li>
+                    <li><input type="radio" name="q8" value="D"> D. 0</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 9: Vector đơn vị của \(\vec{v} = (6,8)\) là gì?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q9" value="A"> A. (3/5, 4/5)</li>
+                    <li><input type="radio" name="q9" value="B"> B. (6/10, 8/10)</li>
+                    <li><input type="radio" name="q9" value="C"> C. (6,8)</li>
+                    <li><input type="radio" name="q9" value="D"> D. (1,1)</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 10: Tổng của hai vector \(\vec{a}\) và \(\vec{b}\) được biểu diễn bằng quy tắc nào?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q10" value="A"> A. Quy tắc bình hành</li>
+                    <li><input type="radio" name="q10" value="B"> B. Quy tắc tam giác</li>
+                    <li><input type="radio" name="q10" value="C"> C. Cả A và B</li>
+                    <li><input type="radio" name="q10" value="D"> D. Không có quy tắc</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 11: Vector pháp tuyến của đường thẳng \(3x - 4y + 5 = 0\) là?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q11" value="A"> A. (3,-4)</li>
+                    <li><input type="radio" name="q11" value="B"> B. (4,3)</li>
+                    <li><input type="radio" name="q11" value="C"> C. (-3,4)</li>
+                    <li><input type="radio" name="q11" value="D"> D. (5,0)</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 12: Trong tam giác ABC, vector trung tuyến từ A đến trung điểm M của BC là?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q12" value="A"> A. \(\frac{\vec{AB} + \vec{AC}}{2}\)</li>
+                    <li><input type="radio" name="q12" value="B"> B. \(\vec{AB} + \vec{AC}\)</li>
+                    <li><input type="radio" name="q12" value="C"> C. \(\frac{\vec{AB} - \vec{AC}}{2}\)</li>
+                    <li><input type="radio" name="q12" value="D"> D. \(\vec{AB} \times \vec{AC}\)</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 13: Tính góc giữa hai vector \(\vec{a} = (1,1)\) và \(\vec{b} = (1,-1)\) bằng tích vô hướng.</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q13" value="A"> A. 90°</li>
+                    <li><input type="radio" name="q13" value="B"> B. 45°</li>
+                    <li><input type="radio" name="q13" value="C"> C. 0°</li>
+                    <li><input type="radio" name="q13" value="D"> D. 180°</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 14: Diện tích tam giác tạo bởi hai vector \(\vec{a}\) và \(\vec{b}\) được tính như thế nào?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q14" value="A"> A. \(\frac{1}{2} |\vec{a} \times \vec{b}|\)</li>
+                    <li><input type="radio" name="q14" value="B"> B. \(|\vec{a} \cdot \vec{b}|\)</li>
+                    <li><input type="radio" name="q14" value="C"> C. \(|\vec{a} + \vec{b}|\)</li>
+                    <li><input type="radio" name="q14" value="D"> D. \(|\vec{a}| + |\vec{b}|\)</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 15: Cho \(\vec{a} = (2,1)\), \(\vec{b} = (3,-2)\). Tính \(\vec{a} \times \vec{b}\) trong mặt phẳng.</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q15" value="A"> A. -7</li>
+                    <li><input type="radio" name="q15" value="B"> B. 7</li>
+                    <li><input type="radio" name="q15" value="C"> C. 0</li>
+                    <li><input type="radio" name="q15" value="D"> D. (2,-2)</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 16: Vector \(\vec{a} = (1,2,3)\) và \(\vec{b} = (2,0,1)\). Tính tích vô hướng \(\vec{a} \cdot \vec{b}\).</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q16" value="A"> A. 11</li>
+                    <li><input type="radio" name="q16" value="B"> B. 5</li>
+                    <li><input type="radio" name="q16" value="C"> C. 0</li>
+                    <li><input type="radio" name="q16" value="D"> D. 7</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 17: Vector pháp tuyến của mặt phẳng \(x - 2y + 3z = 4\) là?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q17" value="A"> A. (1,-2,3)</li>
+                    <li><input type="radio" name="q17" value="B"> B. (4,0,0)</li>
+                    <li><input type="radio" name="q17" value="C"> C. (-1,2,-3)</li>
+                    <li><input type="radio" name="q17" value="D"> D. (1,1,1)</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 18: Trong không gian 3D, trọng tâm G của tam giác ABC có vector vị trí là?</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q18" value="A"> A. \(\frac{\vec{A} + \vec{B} + \vec{C}}{3}\)</li>
+                    <li><input type="radio" name="q18" value="B"> B. \(\vec{A} + \vec{B} + \vec{C}\)</li>
+                    <li><input type="radio" name="q18" value="C"> C. \(\frac{\vec{A} - \vec{B} + \vec{C}}{2}\)</li>
+                    <li><input type="radio" name="q18" value="D"> D. \(\vec{A} \times \vec{B}\)</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 19: Tính \(\vec{a} \times \vec{b}\) với \(\vec{a} = (1,2,0)\), \(\vec{b} = (0,1,2)\).</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q19" value="A"> A. (4,-2,1)</li>
+                    <li><input type="radio" name="q19" value="B"> B. (-4,2,-1)</li>
+                    <li><input type="radio" name="q19" value="C"> C. (0,0,0)</li>
+                    <li><input type="radio" name="q19" value="D"> D. (1,1,1)</li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Câu 20: Ứng dụng của vector trong vật lý là gì? Chọn đáp án đầy đủ nhất.</h3>
+                <ul class="options">
+                    <li><input type="radio" name="q20" value="A"> A. Biểu diễn lực</li>
+                    <li><input type="radio" name="q20" value="B"> B. Biểu diễn vận tốc</li>
+                    <li><input type="radio" name="q20" value="C"> C. Phân tích chuyển động</li>
+                    <li><input type="radio" name="q20" value="D"> D. Tất cả các ý trên</li>
+                </ul>
+            </div>
+        </form>
+        <button id="submitBtn" onclick="submitQuiz()">Nộp Bài</button>
+        <div id="result">
+            <h2>Kết Quả Trắc Nghiệm</h2>
+            <p id="score"></p>
+            <div id="details"></div>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'B',
+            q2: 'A',
+            q3: 'A',
+            q4: 'B',
+            q5: 'A',
+            q6: 'B',
+            q7: 'A',
+            q8: 'A',
+            q9: 'A',
+            q10: 'C',
+            q11: 'A',
+            q12: 'A',
+            q13: 'A',
+            q14: 'A',
+            q15: 'A',
+            q16: 'A',
+            q17: 'A',
+            q18: 'A',
+            q19: 'A',
+            q20: 'D'
+        };
+
+        function submitQuiz() {
+            const form = document.getElementById('quizForm');
+            const resultDiv = document.getElementById('result');
+            const scoreP = document.getElementById('score');
+            const detailsDiv = document.getElementById('details');
+
+            let allAnswered = true;
+            for (let i = 1; i <= 20; i++) {
+                const question = form.elements['q' + i];
+                if (!question.value) {
+                    allAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allAnswered) {
+                alert('Vui lòng trả lời hết tất cả các câu hỏi trước khi nộp bài!');
+                return;
+            }
+
+            let score = 0;
+            detailsDiv.innerHTML = '';
+            for (let i = 1; i <= 20; i++) {
+                const selected = form.elements['q' + i].value;
+                const correct = correctAnswers['q' + i];
+                if (selected === correct) {
+                    score++;
+                    detailsDiv.innerHTML += <p class="correct">Câu ${i}: Đúng! (Bạn chọn ${selected})</p>;
+                } else {
+                    detailsDiv.innerHTML += <p class="incorrect">Câu ${i}: Sai! (Bạn chọn ${selected}, Đáp án đúng: ${correct})</p>;
+                }
+            }
+
+            scoreP.textContent = Bạn đúng ${score}/20 câu. Điểm: ${(score / 20 * 10).toFixed(1)}/10;
+            resultDiv.style.display = 'block';
+            document.getElementById('submitBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
